@@ -1,3 +1,39 @@
+const path = require('path');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
+exports.onCreateWebpackConfig = ({
+    stage,
+    rules,
+    loaders,
+    plugins,
+    actions,
+}) => {
+    if (stage === 'build-html') {
+        actions.setWebpackConfig({
+            plugins: [
+                new CopyWebpackPlugin({
+                    patterns: [
+                        {
+                            from: path.resolve(__dirname, './subtree/omaha-landing/dist'),
+                            to: path.resolve(__dirname, './public'),
+                        }
+                    ]
+                }),
+            ],
+        });
+    }
+};
+
+// exports.onCreateWebpackConfig = ({
+//     stage,
+//     rules,
+//     loaders,
+//     plugins,
+//     actions,
+// }) => {
+//
+// };
+
 exports.createPages = async ({ actions }) => {
   const { createPage } = actions
   createPage({
@@ -6,4 +42,6 @@ exports.createPages = async ({ actions }) => {
     context: {},
     defer: true,
   })
-}
+};
+
+
