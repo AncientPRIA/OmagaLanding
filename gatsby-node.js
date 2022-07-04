@@ -8,6 +8,9 @@ exports.onCreateWebpackConfig = ({
     plugins,
     actions,
 }) => {
+    console.log("STAGE", stage);
+    // build-javascript
+    // build-html
     if (stage === 'build-html') {
         actions.setWebpackConfig({
             plugins: [
@@ -35,13 +38,13 @@ exports.onCreateWebpackConfig = ({
 // };
 
 exports.createPages = async ({ actions }) => {
-  const { createPage } = actions
-  createPage({
-    path: "/using-dsg",
-    component: require.resolve("./src/templates/using-dsg.js"),
-    context: {},
-    defer: true,
-  })
+  // const { createPage } = actions
+  // createPage({
+  //   path: "/using-dsg",
+  //   component: require.resolve("./src/templates/using-dsg.js"),
+  //   context: {},
+  //   defer: true,
+  // })
 };
 
 
